@@ -1,0 +1,25 @@
+config wifi on shell command:
+
+$ sudo -i
+
+## loading wifi
+insmod /lib/modules/brcmutil.ko && insmod /lib/modules/brcmfmac.ko
+/sbin/wpa_supplicant -B -P /run/sendsigs.omit.d/wpasupplicant.pid -u -s -O /var/run/wpa_supplicant
+
+## scanning
+wpa_cli scan
+sleep 3
+wpa_cli scan_result
+
+## add network:
+wpa_cli add_network
+wpa_cli set_network 0 ssid \"Rockchip-guest\"
+wpa_cli set_network 0 psk \"********\"
+
+## connecting:
+wpa_cli select_network 0
+dhclient wlan1
+
+## disconnect
+wpa_cli disable_network 0
+
