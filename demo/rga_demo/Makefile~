@@ -1,5 +1,6 @@
 TOP_DIR = $(shell pwd)
 
+# export CROSS_COMPILER := ../../tools/cross-compiler/gcc-linaro-arm-linux-gnueabihf-4.8/bin/arm-linux-gnueabihf-
 CC     := $(CROSS_COMPILER)gcc
 CXX    := $(CROSS_COMPILER)g++
 AR     := $(CROSS_COMPILER)ar
